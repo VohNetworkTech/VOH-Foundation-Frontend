@@ -1,0 +1,44 @@
+import { Routes, Route } from 'react-router';
+import { ScrollToTop } from './components/ScrollToTop';
+import { Header } from './components/Header';
+import { Hero } from './components/Hero';
+import { AboutUs } from './components/AboutUs';
+import { Founder } from './components/Founder';
+import { Projects } from './components/Projects';
+import { Gallery } from './components/Gallery';
+import { SecretaryMessage } from './components/SecretaryMessage';
+import { Collaboration } from './components/Collaboration';
+import { Footer } from './components/Footer';
+import { ProjectDetail } from './pages/ProjectDetail';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+
+function Home() {
+  return (
+    <div className="min-h-screen bg-white">
+      <Header />
+      <main>
+        <Hero />
+        <AboutUs />
+        <Founder />
+        <Projects />
+        <Gallery />
+        {/* <SecretaryMessage /> */}
+        <Collaboration />
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <>
+    <ScrollToTop />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/projects/:slug" element={<ProjectDetail />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+    </Routes>
+    </>
+  );
+}
