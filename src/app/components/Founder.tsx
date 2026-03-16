@@ -44,33 +44,33 @@ export function Founder() {
               </h4>
 
               <p>
-                After years of entrepreneurial success in the startup world, Dr. Nishchal Naveen has embarked on a new journey — one driven not by profit margins, but by a profound desire to give back to society. As the founder of Purpose Plus Care Foundation, Dr. Nishchal is leveraging his startup acumen and passion for social impact to address critical healthcare needs in underserved communities across India.
+                After years of entrepreneurial success, Dr. Naveen Nishchal has embarked on a mission driven not by profit, but by purpose — improving healthcare access for underserved communities in India.
               </p>
 
               <p>
-                Dr. Nishchal's entrepreneurial journey began with the establishment of two successful startups, each leaving an indelible mark on the healthcare landscape of the country. In his first venture, he revolutionized access to emergency medical care by establishing a chain of hospitals (Cygnus Hospitals) catering specifically to tier 2 and tier 3 cities. These hospitals, strategically positioned to address the crucial 'golden hour' period, provided life-saving interventions for neurotrauma and cardiac emergencies, ultimately saving countless lives.
+                Dr. Nishchal began his entrepreneurial journey by founding Cygnus Hospitals, a chain of hospitals focused on providing quality emergency and critical care in Tier-2 and Tier-3 cities, addressing the crucial golden hour in trauma and cardiac emergencies. The initiative significantly improved access to lifesaving care for millions.
               </p>
 
               <p>
-                Undeterred by the challenges of healthcare delivery, Dr. Nishchal embarked on his second startup venture, focusing on health technology. With innovative solutions tailored for healthcare professionals, he sought to streamline processes and enhance patient care. During his entrepreneurial journey, he earned the support of prominent investors such as Sequoia Capital, Fidelity, Somerset & many other investors — further validating his entrepreneurial prowess.
+                He later ventured into health technology, building solutions aimed at improving efficiency and outcomes for healthcare professionals. His ventures attracted investments from leading global investors including Sequoia Capital, Fidelity, and Somerset.
               </p>
 
               <p>
-                However, Dr. Nishchal's entrepreneurial journey was not solely defined by financial success. Along the way, he witnessed first-hand the glaring disparities in healthcare access and outcomes faced by marginalized communities. It was this realization that ignited his passion for social entrepreneurship — a commitment to leveraging startup principles for the greater good.
+               Through his journey, Dr. Nishchal witnessed deep inequalities in healthcare access. This inspired him to channel his entrepreneurial experience into social impact initiatives.
               </p>
 
               <p>
-                Purpose Plus Care Foundation stands as a testament to Dr. Nishchal's unwavering dedication to social impact. Through this initiative, he aims to bridge the gap in healthcare access, ensuring that even the most vulnerable segments of society receive quality care. From providing essential medical services to implementing community health programs, the foundation's holistic approach seeks to uplift and empower underserved communities across India.
+                Today, through the VOH Foundation, he works to strengthen healthcare awareness, preventive care, and community health initiatives — ensuring that quality healthcare knowledge and services reach even the most underserved populations.
               </p>
 
               <p>
-                Dr. Nishchal Naveen  entrepreneurial journey has been nothing short of remarkable, touching the lives of more than 4 million through his healthcare ventures. Now, with Purpose Plus Care Foundation, he embarks on a new chapter, channeling his expertise and resources towards a mission greater than himself — leaving an enduring legacy of compassion, care, and social impact.
+                Having already impacted millions of lives through healthcare innovation, Dr. Nishchal continues his mission of creating a more equitable and accessible healthcare ecosystem for India.
               </p>
 
               <div className="pt-4 border-t border-gray-100">
                 <p className="font-semibold text-gray-900">With dedication,</p>
                 <p className="font-bold text-lg mt-1 bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">Dr. Nishchal Naveen </p>
-                <p className="text-sm text-gray-400">Founder, Purpose Plus Care Foundation</p>
+                <p className="text-sm text-gray-400">Founder, VOH Foundation</p>
               </div>
             </div>
           </div>

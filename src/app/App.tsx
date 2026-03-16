@@ -11,6 +11,8 @@ import { Collaboration } from './components/Collaboration';
 import { Footer } from './components/Footer';
 import { ProjectDetail } from './pages/ProjectDetail';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { DonationRefundPolicy } from './pages/DonationRefundPolicy';
+import { TermsAndConditions } from './pages/TermsAndConditions';
 
 function Home() {
   return (
@@ -20,9 +22,10 @@ function Home() {
         <Hero />
         <AboutUs />
         <Founder />
+        <SecretaryMessage />
         <Projects />
         <Gallery />
-        {/* <SecretaryMessage /> */}
+        
         <Collaboration />
       </main>
       <Footer />
@@ -38,6 +41,8 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/projects/:slug" element={<ProjectDetail />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/donation-refund-policy" element={<DonationRefundPolicy />} />
+      <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
     </Routes>
     </>
   );

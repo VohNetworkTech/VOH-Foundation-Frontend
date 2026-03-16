@@ -26,7 +26,27 @@ export function ProjectDetail() {
   }
 
   const isHypertension = project.slug === 'hypertension';
-  const extra = project.extra as Record<string, unknown> | undefined;
+  const extra = project.extra as {
+    overviewExtra?: string[];
+    burdenIntro?: string;
+    burdenFactors?: string[];
+    burdenConclusion?: string;
+    statsHeading?: string;
+    stats?: { value: string; label: string }[];
+    statsConclusion?: string;
+    initiativeIntro?: string;
+    initiativeName?: string;
+    partnerNote?: string;
+    whyStudentsIntro?: string;
+    whyStudentsBullets?: string[];
+    whyStudentsOutro?: string;
+    approachIntro?: string;
+    joinIntro?: string;
+    joinInvite?: string;
+    joinBullets?: string[];
+    joinOutro?: string;
+    whyMatters?: string;
+  } | undefined;
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
@@ -66,20 +86,19 @@ export function ProjectDetail() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 space-y-12">
 
           {/* Overview */}
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="md:col-span-2">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Overview</h2>
+          <div className="grid md:grid-cols-3 gap-8 items-start">
+            <div className="md:col-span-2 space-y-4">
+              <h2 className="text-xl font-bold text-gray-900">Overview</h2>
               <p className="text-gray-600 leading-relaxed">{project.overview}</p>
-
-              {isHypertension && extra?.partnerNote && (
-                <div className={`mt-5 border-l-4 ${project.accentBorder} pl-4 text-sm text-gray-600 italic`}>
-                  {extra.partnerNote as string}
-                </div>
+              {extra?.overviewExtra && (
+                <>{extra.overviewExtra.map((para, i) => (
+                  <p key={i} className="text-gray-600 leading-relaxed">{para}</p>
+                ))}</>
               )}
             </div>
 
             {/* Mission card */}
-            <div className={`${project.accentBg} rounded-2xl p-6 text-white`}>
+            <div className={`${project.accentBg} rounded-2xl p-6 text-white self-start`}>
               <div className="flex items-center gap-2 mb-3">
                 <Target size={20} />
                 <span className="font-bold text-sm uppercase tracking-wide">Mission</span>
@@ -88,33 +107,97 @@ export function ProjectDetail() {
             </div>
           </div>
 
-          {/* Hypertension-only: Stats + Why Students */}
-          {isHypertension && extra?.stats && (
+          {/* Hypertension-only: Growing Burden */}
+          {isHypertension && (
             <div className="space-y-8">
               <div>
-                <h2 className="text-xl font-bold text-gray-900 mb-5">The Growing Burden</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {(extra.stats as { value: string; label: string }[]).map((stat, i) => (
-                    <div key={i} className="bg-blue-50 border border-blue-100 rounded-xl p-5 text-center">
-                      <p className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent mb-1">{stat.value}</p>
-                      <p className="text-xs text-gray-500 leading-snug">{stat.label}</p>
-                    </div>
-                  ))}
-                </div>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">The Growing Burden of Hypertension</h2>
+                {extra?.burdenIntro && (
+                  <p className="text-gray-600 leading-relaxed mb-3">{extra.burdenIntro as string}</p>
+                )}
+                {extra?.burdenFactors && (
+                  <ul className="space-y-2 mb-4">
+                    {(extra.burdenFactors as string[]).map((f, i) => (
+                      <li key={i} className="flex items-start gap-2 text-gray-600 text-sm">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {extra?.burdenConclusion && (
+                  <p className="text-gray-600 leading-relaxed">{extra.burdenConclusion as string}</p>
+                )}
               </div>
 
-              {extra.whyStudents && (
-                <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
-                  <h2 className="text-xl font-bold text-gray-900 mb-3">Why Focus on Medical Students?</h2>
-                  <p className="text-gray-600 text-sm leading-relaxed">{extra.whyStudents as string}</p>
+              {/* Stats */}
+              {extra?.stats && (
+                <div>
+                  {extra?.statsHeading && (
+                    <p className="text-base font-semibold text-gray-700 mb-4">{extra.statsHeading as string}</p>
+                  )}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {(extra.stats as { value: string; label: string }[]).map((stat, i) => (
+                      <div key={i} className="bg-blue-50 border border-blue-100 rounded-xl p-5 text-center">
+                        <p className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent mb-1">{stat.value}</p>
+                        <p className="text-xs text-gray-500 leading-snug">{stat.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                  {extra?.statsConclusion && (
+                    <p className="text-gray-600 text-sm mt-4 leading-relaxed">{extra.statsConclusion as string}</p>
+                  )}
                 </div>
+              )}
+            </div>
+          )}
+
+          {/* Hypertension-only: Our Initiative */}
+          {isHypertension && (extra?.initiativeIntro || extra?.partnerNote) && (
+            <div className="bg-gray-50 rounded-2xl p-6 md:p-8 space-y-4">
+              <h2 className="text-xl font-bold text-gray-900">Our Initiative: Ripple Effect for Hypertension Control</h2>
+              {extra?.initiativeIntro && (
+                <p className="text-gray-600 leading-relaxed">{extra.initiativeIntro as string}</p>
+              )}
+              {extra?.initiativeName && (
+                <p className={`font-semibold text-base ${project.accentText}`}>{extra.initiativeName as string}</p>
+              )}
+              {extra?.partnerNote && (
+                <p className="text-gray-600 leading-relaxed text-sm">{extra.partnerNote as string}</p>
+              )}
+            </div>
+          )}
+
+          {/* Hypertension-only: Why Focus on Medical Students */}
+          {isHypertension && extra?.whyStudentsIntro && (
+            <div className="space-y-4">
+              <h2 className="text-xl font-bold text-gray-900">Why Focus on Medical Students?</h2>
+              <p className="text-gray-600 leading-relaxed">{extra.whyStudentsIntro as string}</p>
+              {extra?.whyStudentsBullets && (
+                <>
+                  <p className="text-gray-700 font-medium">Medical students trained today will:</p>
+                  <ul className="space-y-2">
+                    {(extra.whyStudentsBullets as string[]).map((b, i) => (
+                      <li key={i} className="flex items-start gap-2 text-gray-600 text-sm">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+              {extra?.whyStudentsOutro && (
+                <p className="text-gray-600 leading-relaxed">{extra.whyStudentsOutro as string}</p>
               )}
             </div>
           )}
 
           {/* Approach */}
           <div>
-            <h2 className="text-xl font-bold text-gray-900 mb-6">Our Approach</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-3">Our Approach</h2>
+            {extra?.approachIntro && (
+              <p className="text-gray-600 leading-relaxed mb-6">{extra.approachIntro}</p>
+            )}
             <div className="grid sm:grid-cols-2 gap-5">
               {project.approaches.map((item, i) => (
                 <div key={i} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
@@ -123,41 +206,68 @@ export function ProjectDetail() {
                   </div>
                   <h3 className="font-bold text-gray-900 mb-2 text-sm">{item.label}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">{item.detail}</p>
+                  {item.bullets && (
+                    <ul className="mt-2 space-y-1">
+                      {item.bullets.map((b, j) => (
+                        <li key={j} className="flex items-start gap-2 text-gray-500 text-sm">
+                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0" />
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {item.outro && (
+                    <p className="text-gray-500 text-sm leading-relaxed mt-2">{item.outro}</p>
+                  )}
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Impact */}
-          <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-5">Impact We Aim to Create</h2>
-            <div className="grid sm:grid-cols-2 gap-3">
-              {project.impact.map((item, i) => (
-                <div key={i} className="flex items-start gap-3 text-sm text-gray-600">
-                  <CheckCircle className={`${project.accentText} flex-shrink-0 mt-0.5`} size={18} />
-                  {item}
-                </div>
-              ))}
+          {/* Impact (non-hypertension only) */}
+          {!isHypertension && (
+            <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
+              <h2 className="text-xl font-bold text-gray-900 mb-5">Impact We Aim to Create</h2>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {project.impact.map((item, i) => (
+                  <div key={i} className="flex items-start gap-3 text-sm text-gray-600">
+                    <CheckCircle className={`${project.accentText} flex-shrink-0 mt-0.5`} size={18} />
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
-          {/* Why this matters / CTA */}
+          {/* Why this matters (non-hypertension) */}
           {!isHypertension && extra?.whyMatters && (
             <div className={`border-l-4 ${project.accentBorder} pl-5 text-gray-600 italic leading-relaxed`}>
               {extra.whyMatters as string}
             </div>
           )}
 
-          {isHypertension && (
-            <div className={`${project.accentBg} rounded-2xl p-6 md:p-8 text-white`}>
-              <h3 className="text-lg font-bold mb-3">Join the Movement</h3>
-              <p className="text-sm leading-relaxed opacity-90">
-                We invite CSR partners, healthcare institutions, medical colleges, and public health stakeholders to support initiatives that strengthen hypertension awareness and preventive healthcare — helping train the next generation of healthcare providers and improve cardiovascular health outcomes across communities.
-              </p>
+          {/* Join the Movement */}
+          {isHypertension ? (
+            <div className={`${project.accentBg} rounded-2xl p-6 md:p-8 text-white space-y-4`}>
+              <h3 className="text-lg font-bold">Join the Movement</h3>
+              {extra?.joinIntro && <p className="text-sm leading-relaxed opacity-90">{extra.joinIntro as string}</p>}
+              {extra?.joinInvite && <p className="text-sm leading-relaxed opacity-90">{extra.joinInvite as string}</p>}
+              {extra?.joinBullets && (
+                <>
+                  <p className="text-sm font-semibold opacity-95">By supporting this initiative, partners can help:</p>
+                  <ul className="space-y-2">
+                    {(extra.joinBullets as string[]).map((b, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm opacity-90">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white flex-shrink-0" />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+              {extra?.joinOutro && <p className="text-sm leading-relaxed opacity-90">{extra.joinOutro as string}</p>}
             </div>
-          )}
-
-          {!isHypertension && (
+          ) : (
             <div className={`${project.accentBg} rounded-2xl p-6 md:p-8 text-white`}>
               <h3 className="text-lg font-bold mb-3">Join the Movement</h3>
               <p className="text-sm leading-relaxed opacity-90">

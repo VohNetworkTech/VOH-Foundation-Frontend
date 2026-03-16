@@ -14,7 +14,7 @@ export function Hero() {
               EXCELLENCE IN CARE.
             </h1>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Purpose Plus Care Foundation dedicates itself to the well-being of underserved communities through comprehensive healthcare services.
+              VOH Foundation dedicates itself to the well-being of underserved communities through comprehensive healthcare services.
             </p>
             <a
               href="https://zfrmz.in/kbWQ3iRa6HIFtQF7DVgc"
@@ -29,7 +29,7 @@ export function Hero() {
           {/* Right Image */}
           <div className="rounded-2xl overflow-hidden shadow-xl">
             <img
-              src="https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1773532160899%3A0.38071500472258935.jpg"
+              src="https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1773661170210%3A0.27309643587655974.png"
               alt="VOH Foundation — Healthcare in action"
               className="w-full h-auto"
             />

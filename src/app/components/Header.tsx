@@ -59,7 +59,7 @@ export function Header() {
           {/* Logo */}
           <Link to="/" className="flex-shrink-0">
             <img
-              src="https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1773530472840%3A0.12478133441446215.png"
+              src="https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1773641838128%3A0.7697893442128043.png"
               alt="VOH Foundation"
               className="h-7 w-auto object-contain"
             />

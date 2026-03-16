@@ -12,7 +12,8 @@ export function AboutUs() {
           <div className="inline-block bg-blue-50 text-blue-700 border border-blue-100 text-sm font-semibold px-4 py-1 rounded-full mb-3 tracking-wide">
             Impact • Access • Equity
           </div>
-          <p className="text-xl font-bold text-gray-800">VOICE OF HEALTHCARE</p>
+          <p className="text-xl font-bold text-gray-800">VOH FOUNDATION</p>
+          <p className="text-gray-600 font-medium mt-1">(An initiative of Voice of Healthcare)</p>
           <p className="text-blue-600 font-medium mt-1">Society / Non-Profit</p>
         </div>
 
