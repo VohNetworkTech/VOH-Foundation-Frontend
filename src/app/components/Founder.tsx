@@ -44,7 +44,7 @@ export function Founder() {
               </h4>
 
               <p>
-                After years of entrepreneurial success, Dr. Naveen Nishchal has embarked on a mission driven not by profit, but by purpose — improving healthcare access for underserved communities in India.
+                After years of entrepreneurial success, Dr. Nishchal Naveen has embarked on a mission driven not by profit, but by purpose — improving healthcare access for underserved communities in India.
               </p>
 
               <p>

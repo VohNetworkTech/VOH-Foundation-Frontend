@@ -29,7 +29,7 @@ export function Hero() {
           {/* Right Image */}
           <div className="rounded-2xl overflow-hidden shadow-xl">
             <img
-              src="https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1773661170210%3A0.27309643587655974.png"
+              src="https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1773985860457%3A0.5646501345237953.jpg"
               alt="VOH Foundation — Healthcare in action"
               className="w-full h-auto"
             />
