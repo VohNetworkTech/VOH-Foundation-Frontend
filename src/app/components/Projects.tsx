@@ -2,7 +2,7 @@ import { Heart, Activity, ArrowRight, BriefcaseMedical } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { projects } from '../data/projects';
-import { ProjectBanner, UpcomingBadge } from './ProjectBanner';
+import { ProjectBanner } from './ProjectBanner';
 
 // Card icon per project (keyed by slug so reordering projects doesn't swap icons)
 const icons: Record<string, ReactNode> = {
@@ -40,12 +40,11 @@ export function Projects() {
                   {icons[project.slug] ?? <Heart className="text-white" size={22} />}
                 </div>
 
-                {/* Category + status badges */}
-                <div className="absolute top-4 right-4 flex flex-col items-end gap-2">
+                {/* Category badge */}
+                <div className="absolute top-4 right-4">
                   <span className={`text-xs font-semibold px-3 py-1 rounded-full ${project.categoryColor} bg-white/90`}>
                     {project.category}
                   </span>
-                  {project.status === 'upcoming' && <UpcomingBadge />}
                 </div>
 
                 {/* Title on image */}
@@ -57,9 +56,9 @@ export function Projects() {
 
               {/* Body */}
               <div className="p-6 flex flex-col flex-1">
-                <p className="text-gray-500 text-sm leading-relaxed flex-1">{project.summary}</p>
+                <p className="text-gray-500 text-sm leading-relaxed">{project.summary}</p>
 
-                {/* Key impact preview */}
+                {/* Key impact preview — sits right under the summary; button stays pinned to the bottom */}
                 <ul className="mt-4 space-y-1.5 mb-6">
                   {project.impact.slice(0, 3).map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-xs text-gray-500">
@@ -71,7 +70,7 @@ export function Projects() {
 
                 <Link
                   to={`/projects/${project.slug}`}
-                  className={`inline-flex items-center justify-center gap-2 w-full ${project.accentBg} text-white text-sm font-semibold py-3 rounded-xl hover:opacity-90 active:scale-95 transition-all duration-200 shadow-sm`}
+                  className={`mt-auto inline-flex items-center justify-center gap-2 w-full ${project.accentBg} text-white text-sm font-semibold py-3 rounded-xl hover:opacity-90 active:scale-95 transition-all duration-200 shadow-sm`}
                 >
                   View Full Details <ArrowRight size={16} />
                 </Link>

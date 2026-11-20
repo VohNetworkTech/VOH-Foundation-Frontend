@@ -26,19 +26,42 @@ export function Footer() {
       <div className="h-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-600" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8 mb-10">
 
-          {/* Brand + Contact */}
-          <div>
-            {/* Logo */}
-            <div className="mb-5">
-              <img
-                src="https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1773530472840%3A0.12478133441446215.png"
-                alt="VOH Foundation"
-                className="h-7 w-auto object-contain brightness-0 invert"
-              />
+          {/* Brand + Social */}
+          <div className="lg:col-span-4">
+            <img
+              src="https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1773530472840%3A0.12478133441446215.png"
+              alt="VOH Foundation"
+              className="h-8 w-auto object-contain brightness-0 invert"
+            />
+            <p className="text-sm text-gray-400 mt-4 leading-relaxed max-w-xs">
+              Follow our journey in bringing healthcare to underserved communities.
+            </p>
+            <div className="flex gap-3 mt-5">
+              {[
+                { icon: <InstagramIcon />, label: 'Instagram', href: 'https://www.instagram.com/vohfoundation_official/' },
+                { icon: <XIcon />, label: 'X', href: 'https://x.com/voh_foundation' },
+                { icon: <LinkedInIcon />, label: 'LinkedIn', href: 'https://www.linkedin.com/company/102000406/' },
+                // { icon: <Facebook size={17} />, label: 'Facebook', href: '#' },
+              ].map(({ icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gradient-to-br hover:from-blue-600 hover:to-teal-600 transition-all duration-200"
+                >
+                  {icon}
+                </a>
+              ))}
             </div>
-            <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">CONTACT US</h3>
+          </div>
+
+          {/* Contact */}
+          <div className="lg:col-span-4">
+            <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">CONTACT US</h3>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <MapPin size={16} className="mt-0.5 flex-shrink-0 text-teal-400" />
@@ -68,9 +91,9 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="lg:col-span-2">
             <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">QUICK LINKS</h3>
-            <div className="space-y-2">
+            <div className="space-y-3">
               {['About Us', 'Founder', 'Projects', 'Gallery', 'Collaboration'].map((item) => (
                 <a
                   key={item}
@@ -84,9 +107,9 @@ export function Footer() {
           </div>
 
           {/* Legal */}
-          <div>
+          <div className="lg:col-span-2">
             <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">LEGAL</h3>
-            <div className="space-y-2">
+            <div className="space-y-3">
               <Link to="/privacy-policy" className="block text-sm text-gray-300 hover:text-teal-400 transition-colors">
                 Privacy Policy
               </Link>
@@ -97,33 +120,6 @@ export function Footer() {
                 Terms and Conditions
               </Link>
             </div>
-          </div>
-
-          {/* Social */}
-          <div>
-            <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">FOLLOW US</h3>
-            <div className="flex gap-3">
-              {[
-                { icon: <InstagramIcon />, label: 'Instagram', href: 'https://www.instagram.com/vohfoundation_official/' },
-                { icon: <XIcon />, label: 'X', href: 'https://x.com/voh_foundation' },
-                { icon: <LinkedInIcon />, label: 'LinkedIn', href: 'https://www.linkedin.com/company/102000406/' },
-                // { icon: <Facebook size={17} />, label: 'Facebook', href: '#' },
-              ].map(({ icon, label, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gradient-to-br hover:from-blue-600 hover:to-teal-600 transition-all duration-200"
-                >
-                  {icon}
-                </a>
-              ))}
-            </div>
-            <p className="text-xs text-gray-500 mt-5 leading-relaxed">
-              Follow our journey in bringing healthcare to underserved communities.
-            </p>
           </div>
 
         </div>
