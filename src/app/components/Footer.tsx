@@ -69,15 +69,19 @@ export function Footer() {
                   href="https://www.google.com/maps/search/?api=1&query=Tower+B+Unitech+Business+Zone+Sector+50+Gurgaon"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-gray-300 hover:text-teal-400 transition-colors leading-relaxed"
+                  className="text-sm text-gray-300 hover:text-teal-400 transition-colors"
                 >
-                  <span className="block text-xs text-gray-400">Head Office</span>
-                  104, First Floor, Tower B, Unitech Business Zone, Sector 50, Gurgaon
+                  <span className="block text-xs text-gray-400 mb-1">Head Office</span>
+                  <span className="block leading-relaxed">
+                    <span className="block">104, First Floor, Tower B,</span>
+                    <span className="block">Unitech Business Zone,</span>
+                    <span className="block">Sector 50, Gurgaon</span>
+                  </span>
                 </a>
               </div>
               <div className="flex items-start gap-3">
                 <User size={16} className="mt-0.5 flex-shrink-0 text-teal-400" />
-                <span className="text-sm text-gray-300">Tuhinaa Despande</span>
+                <span className="text-sm text-gray-300">Tuhina Deshpande</span>
               </div>
               <div className="flex items-start gap-3">
                 <Phone size={16} className="mt-0.5 flex-shrink-0 text-teal-400" />
