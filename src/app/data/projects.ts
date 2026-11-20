@@ -9,7 +9,9 @@ export type Project = {
   accentBg: string;
   accentText: string;
   accentBorder: string;
+  /** Image URL. Leave empty to show a coloured placeholder banner. */
   banner: string;
+  status?: 'upcoming';
   summary: string;
   overview: string;
   mission: string;
@@ -19,6 +21,65 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: 'first-response',
+    title: 'FIRST RESPONSE',
+    tagline: 'Emergency First Aid & CPR for School Students',
+    category: 'First Aid & CPR',
+    categoryColor: 'bg-blue-100 text-blue-700',
+    accentBg: 'bg-gradient-to-r from-blue-600 to-teal-600',
+    accentText: 'text-blue-600',
+    accentBorder: 'border-blue-400',
+    banner: '',
+    status: 'upcoming',
+    summary: 'Emergency first aid and CPR for school students, with touchpoints in Class 9 and Class 11.',
+    overview: 'Choking, injuries, burns or a sudden collapse can happen at home, at school or on the road, often before professional help arrives. Students who know what to do can act in those first minutes.',
+    mission: 'Every student ready to help in an emergency.',
+    approaches: [],
+    impact: [
+      'Schools reach every student in a cohort',
+      'A second touchpoint reinforces skills',
+      'Students carry skills home to families',
+    ],
+    extra: {
+      overviewExtra: [
+        'First Response builds these skills through two school touchpoints, so learning is introduced early and reinforced as students mature.',
+      ],
+      approachIntro: 'Building on the same approach: train people early, reinforce learning at a second touchpoint, and measure what changes.',
+      touchpoints: [
+        {
+          grade: 'Class 9',
+          step: 'Touchpoint 1',
+          title: 'Emergency first aid',
+          detail: 'Extensive, hands-on first-aid training for everyday emergencies.',
+          learn: [
+            'Checking safety and calling for help (112 / 108)',
+            'Bleeding, wounds and burns',
+            'Fractures, sprains and safe immobilisation',
+            'Choking, fainting and seizures',
+            'Heat illness, bites and stings',
+            'Road-accident response and the recovery position',
+          ],
+        },
+        {
+          grade: 'Class 11',
+          step: 'Touchpoint 2',
+          title: 'CPR training',
+          detail: 'Hands-on CPR practice on manikins, building on the Class 9 foundation.',
+          learn: [
+            'Recognising cardiac arrest',
+            'Hands-only CPR: hand position, rate and depth',
+            'Supervised practice on manikins',
+            'Choking response refresher',
+            'Awareness of AEDs (defibrillators)',
+            'Leading a calm bystander response',
+          ],
+        },
+      ],
+      touchpointGap: 'Two years later: reinforce and advance',
+      deliveryNote: 'Delivered by trained medical professionals, with hands-on practice, pre- and post-training skill checks and certificates for students.',
+    },
+  },
   {
     slug: 'first-flow',
     title: 'FIRST FLOW: Bleed with Dignity',

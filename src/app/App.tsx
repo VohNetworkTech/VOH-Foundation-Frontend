@@ -5,6 +5,7 @@ import { Hero } from './components/Hero';
 import { AboutUs } from './components/AboutUs';
 import { Founder } from './components/Founder';
 import { Projects } from './components/Projects';
+import { ImpactSoFar } from './components/ImpactSoFar';
 import { Gallery } from './components/Gallery';
 import { SecretaryMessage } from './components/SecretaryMessage';
 import { Collaboration } from './components/Collaboration';
@@ -24,6 +25,7 @@ function Home() {
         <Founder />
         <SecretaryMessage />
         <Projects />
+        <ImpactSoFar />
         <Gallery />
         
         <Collaboration />

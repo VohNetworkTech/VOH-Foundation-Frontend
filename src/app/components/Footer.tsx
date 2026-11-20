@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, User } from 'lucide-react';
 
 const XIcon = () => (
   <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor">
@@ -42,11 +42,23 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <MapPin size={16} className="mt-0.5 flex-shrink-0 text-teal-400" />
-                <span className="text-sm text-gray-300">Pinky Chahar</span>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Tower+B+Unitech+Business+Zone+Sector+50+Gurgaon"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-gray-300 hover:text-teal-400 transition-colors leading-relaxed"
+                >
+                  <span className="block text-xs text-gray-400">Head Office</span>
+                  104, First Floor, Tower B, Unitech Business Zone, Sector 50, Gurgaon
+                </a>
+              </div>
+              <div className="flex items-start gap-3">
+                <User size={16} className="mt-0.5 flex-shrink-0 text-teal-400" />
+                <span className="text-sm text-gray-300">Tuhinaa Despande</span>
               </div>
               <div className="flex items-start gap-3">
                 <Phone size={16} className="mt-0.5 flex-shrink-0 text-teal-400" />
-                <a href="tel:+919599193575" className="text-sm text-gray-300 hover:text-teal-400 transition-colors">+91 95991 93575</a>
+                <a href="tel:+919999651145" className="text-sm text-gray-300 hover:text-teal-400 transition-colors">+91 99996 51145</a>
               </div>
               <div className="flex items-start gap-3">
                 <Mail size={16} className="mt-0.5 flex-shrink-0 text-teal-400" />

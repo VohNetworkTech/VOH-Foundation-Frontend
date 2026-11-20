@@ -1,8 +1,13 @@
 import { useParams, Link } from 'react-router';
-import { ArrowLeft, CheckCircle, Target, BookOpen, Users, Microscope, Globe, TrendingUp } from 'lucide-react';
+import {
+  ArrowLeft, ArrowDown, ArrowRight, CheckCircle, Target, BookOpen, Users, Microscope, Globe, TrendingUp,
+  BriefcaseMedical, HeartPulse, School, RefreshCw, House, Phone, Bandage, Bone, Wind, Sun, CarFront,
+  Hand, UserCheck, Zap, Award,
+} from 'lucide-react';
 import { projects } from '../data/projects';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { ProjectBanner, UpcomingBadge } from '../components/ProjectBanner';
 
 const approachIcons = [
   <BookOpen size={20} />,
@@ -11,6 +16,19 @@ const approachIcons = [
   <Globe size={20} />,
   <TrendingUp size={20} />,
 ];
+
+// First Response: icons for the three "why schools" points and each touchpoint's topics
+const whyIcons = [<School size={20} />, <RefreshCw size={20} />, <House size={20} />];
+const touchpointStyles = [
+  { box: 'bg-blue-600', text: 'text-blue-600', icon: <BriefcaseMedical size={28} /> },
+  { box: 'bg-teal-600', text: 'text-teal-600', icon: <HeartPulse size={28} /> },
+];
+const learnIcons = [
+  [Phone, Bandage, Bone, Wind, Sun, CarFront],
+  [HeartPulse, Hand, UserCheck, Wind, Zap, Users],
+];
+
+type Touchpoint = { grade: string; step: string; title: string; detail: string; learn: string[] };
 
 export function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -26,6 +44,7 @@ export function ProjectDetail() {
   }
 
   const isHypertension = project.slug === 'hypertension';
+  const isFirstResponse = project.slug === 'first-response';
   const extra = project.extra as {
     overviewExtra?: string[];
     burdenIntro?: string;
@@ -41,6 +60,9 @@ export function ProjectDetail() {
     whyStudentsBullets?: string[];
     whyStudentsOutro?: string;
     approachIntro?: string;
+    touchpoints?: Touchpoint[];
+    touchpointGap?: string;
+    deliveryNote?: string;
     joinIntro?: string;
     joinInvite?: string;
     joinBullets?: string[];
@@ -65,18 +87,17 @@ export function ProjectDetail() {
 
           {/* Banner — 16:9, aligned with content */}
           <div className="aspect-video w-full overflow-hidden rounded-2xl shadow-lg">
-            <img
-              src={project.banner}
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
+            <ProjectBanner project={project} icon={<BriefcaseMedical size={96} strokeWidth={1.25} />} />
           </div>
 
           {/* Title block */}
           <div>
-            <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full mb-3 ${project.categoryColor}`}>
-              {project.category}
-            </span>
+            <div className="flex flex-wrap gap-2 mb-3">
+              <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full ${project.categoryColor}`}>
+                {project.category}
+              </span>
+              {project.status === 'upcoming' && <UpcomingBadge />}
+            </div>
             <h1 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">{project.title}</h1>
             <p className="text-gray-500 mt-1.5 text-sm md:text-base">{project.tagline}</p>
           </div>
@@ -106,6 +127,75 @@ export function ProjectDetail() {
               <p className="text-sm leading-relaxed opacity-95">{project.mission}</p>
             </div>
           </div>
+
+          {/* First Response: why schools */}
+          {isFirstResponse && (
+            <div className="grid sm:grid-cols-3 gap-4">
+              {project.impact.map((point, i) => (
+                <div key={i} className="flex items-center gap-3 bg-blue-50 border border-blue-100 rounded-xl p-4">
+                  <span className="text-blue-600 flex-shrink-0">{whyIcons[i % whyIcons.length]}</span>
+                  <span className="text-sm text-gray-700 font-medium">{point}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* First Response: what students learn at each touchpoint */}
+          {isFirstResponse && extra?.touchpoints && (
+            <div>
+              <h2 className="text-xl font-bold text-gray-900 mb-3">What Students Learn at Each Touchpoint</h2>
+              {extra.approachIntro && (
+                <p className="text-gray-600 leading-relaxed mb-6">{extra.approachIntro}</p>
+              )}
+              <div className="grid md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-3 items-stretch">
+                {extra.touchpoints.map((tp, i) => {
+                  const style = touchpointStyles[i % touchpointStyles.length];
+                  const icons = learnIcons[i % learnIcons.length];
+                  return (
+                    <div key={tp.grade} className="contents">
+                      {i > 0 && extra.touchpointGap && (
+                        <div className="flex md:flex-col items-center justify-center gap-2 text-xs italic text-gray-500 md:w-28 text-center">
+                          <ArrowDown size={16} className="md:hidden" />
+                          <ArrowRight size={16} className="hidden md:block" />
+                          {extra.touchpointGap}
+                        </div>
+                      )}
+                      <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+                        <div className="flex items-stretch">
+                          <div className={`${style.box} text-white px-5 py-4 flex flex-col items-center justify-center text-center min-w-[7.5rem]`}>
+                            {style.icon}
+                            <span className="font-bold text-lg mt-1">{tp.grade}</span>
+                            <span className="text-[10px] font-semibold uppercase tracking-wider opacity-90">{tp.step}</span>
+                          </div>
+                          <div className="p-5">
+                            <h3 className={`font-bold text-lg mb-1 ${style.text}`}>{tp.title}</h3>
+                            <p className="text-gray-600 text-sm leading-relaxed">{tp.detail}</p>
+                          </div>
+                        </div>
+                        <ul className="p-5 pt-4 space-y-3 border-t border-gray-100">
+                          {tp.learn.map((item, j) => {
+                            const Icon = icons[j % icons.length];
+                            return (
+                              <li key={j} className="flex items-start gap-3 text-sm text-gray-700">
+                                <Icon size={18} className={`${style.text} flex-shrink-0 mt-0.5`} />
+                                {item}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              {extra.deliveryNote && (
+                <div className={`mt-6 ${project.accentBg} text-white rounded-2xl px-6 py-4 flex items-center gap-4`}>
+                  <Award size={28} className="flex-shrink-0" />
+                  <p className="text-sm leading-relaxed">{extra.deliveryNote}</p>
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Hypertension-only: Growing Burden */}
           {isHypertension && (
@@ -193,6 +283,7 @@ export function ProjectDetail() {
           )}
 
           {/* Approach */}
+          {project.approaches.length > 0 && (
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-3">Our Approach</h2>
             {extra?.approachIntro && (
@@ -223,9 +314,10 @@ export function ProjectDetail() {
               ))}
             </div>
           </div>
+          )}
 
-          {/* Impact (non-hypertension only) */}
-          {!isHypertension && (
+          {/* Impact (First Flow only) */}
+          {!isHypertension && !isFirstResponse && (
             <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
               <h2 className="text-xl font-bold text-gray-900 mb-5">Impact We Aim to Create</h2>
               <div className="grid sm:grid-cols-2 gap-3">
@@ -267,7 +359,7 @@ export function ProjectDetail() {
               )}
               {extra?.joinOutro && <p className="text-sm leading-relaxed opacity-90">{extra.joinOutro as string}</p>}
             </div>
-          ) : (
+          ) : !isFirstResponse && (
             <div className={`${project.accentBg} rounded-2xl p-6 md:p-8 text-white`}>
               <h3 className="text-lg font-bold mb-3">Join the Movement</h3>
               <p className="text-sm leading-relaxed opacity-90">

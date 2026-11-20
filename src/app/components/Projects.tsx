@@ -1,11 +1,15 @@
-import { Heart, Activity, ArrowRight } from 'lucide-react';
+import { Heart, Activity, ArrowRight, BriefcaseMedical } from 'lucide-react';
+import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { projects } from '../data/projects';
+import { ProjectBanner, UpcomingBadge } from './ProjectBanner';
 
-const icons = [
-  <Heart className="text-white" size={22} />,
-  <Activity className="text-white" size={22} />,
-];
+// Card icon per project (keyed by slug so reordering projects doesn't swap icons)
+const icons: Record<string, ReactNode> = {
+  'first-response': <BriefcaseMedical className="text-white" size={22} />,
+  'first-flow': <Heart className="text-white" size={22} />,
+  hypertension: <Activity className="text-white" size={22} />,
+};
 
 export function Projects() {
   return (
@@ -16,31 +20,32 @@ export function Projects() {
           <div className="mt-3 w-16 h-1 bg-gradient-to-r from-blue-600 to-teal-600 mx-auto rounded-full" />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => (
             <div
               key={project.slug}
               className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col"
             >
               {/* Banner — 16:9 */}
               <div className="relative aspect-video overflow-hidden flex-shrink-0">
-                <img
-                  src={project.banner}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                <ProjectBanner
+                  project={project}
+                  icon={<BriefcaseMedical size={64} strokeWidth={1.5} />}
+                  className="group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent" />
 
                 {/* Icon */}
                 <div className={`absolute top-4 left-4 w-11 h-11 ${project.accentBg} rounded-xl flex items-center justify-center shadow-lg`}>
-                  {icons[index]}
+                  {icons[project.slug] ?? <Heart className="text-white" size={22} />}
                 </div>
 
-                {/* Category badge */}
-                <div className="absolute top-4 right-4">
+                {/* Category + status badges */}
+                <div className="absolute top-4 right-4 flex flex-col items-end gap-2">
                   <span className={`text-xs font-semibold px-3 py-1 rounded-full ${project.categoryColor} bg-white/90`}>
                     {project.category}
                   </span>
+                  {project.status === 'upcoming' && <UpcomingBadge />}
                 </div>
 
                 {/* Title on image */}

@@ -3,15 +3,15 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const galleryImages = [
   {
-    url: 'https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1773531680923%3A0.680413911401724.jpg',
+    url: 'https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1795170659032%3A0.9768716549100875.jpeg',
     alt: 'Healthcare consultation',
   },
   {
-    url: 'https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1773531289243%3A0.31800493651783124.jpg',
+    url: 'https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1795170830851%3A0.664980946314895.jpeg',
     alt: 'Medical team collaboration',
   },
   {
-    url: 'https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1773531720374%3A0.8462039917738422.jpg',
+    url: 'https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1795170759510%3A0.7388584820310633.jpeg',
     alt: 'Community health outreach',
   },
   {
@@ -19,11 +19,11 @@ const galleryImages = [
     alt: 'Patient care',
   },
   {
-    url: 'https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1773531759003%3A0.06698696672081672.jpg',
+    url: 'https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1795170994518%3A0.3292673133401727.jpeg',
     alt: 'Healthcare team',
   },
   {
-    url: 'https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1773531843716%3A0.719322398014751.jpg',
+    url: 'https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1795170877843%3A0.583236278193155.jpeg',
     alt: 'Community service',
   },
 ];
@@ -68,7 +68,7 @@ export function Gallery() {
           {galleryImages.map((image, index) => (
             <div
               key={index}
-              className="aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group relative"
+              className="aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group"
               onClick={() => setLightboxIndex(index)}
             >
               <img
@@ -76,12 +76,6 @@ export function Gallery() {
                 alt={image.alt}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              {/* Overlay on hover */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
-                <span className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50 px-3 py-1 rounded-full">
-                  {image.alt}
-                </span>
-              </div>
             </div>
           ))}
         </div>
