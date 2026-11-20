@@ -1,6 +1,7 @@
 export function SecretaryMessage() {
   return (
-    <section id="message" className="py-16 md:py-24 bg-white">
+    // No bottom padding: Projects (also white) follows, and its top padding provides the gap
+    <section id="message" className="pt-16 md:pt-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="text-center mb-12">

@@ -26,14 +26,15 @@ export function Footer() {
       <div className="h-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-600" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8 mb-10">
+        {/* On desktop each column takes its content width and the gaps between columns are equal */}
+        <div className="grid gap-10 md:grid-cols-2 lg:flex lg:justify-between lg:gap-12 mb-10">
 
           {/* Brand + Social */}
-          <div className="lg:col-span-4">
+          <div className="lg:max-w-xs">
             <img
               src="https://voh-buckets.s3.ap-south-1.amazonaws.com/stage/1773530472840%3A0.12478133441446215.png"
               alt="VOH Foundation"
-              className="h-8 w-auto object-contain brightness-0 invert"
+              className="h-8 w-auto max-w-full object-contain object-left brightness-0 invert"
             />
             <p className="text-sm text-gray-400 mt-4 leading-relaxed max-w-xs">
               Follow our journey in bringing healthcare to underserved communities.
@@ -60,7 +61,7 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="lg:col-span-4">
+          <div>
             <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">CONTACT US</h3>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
@@ -95,7 +96,7 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="lg:col-span-2">
+          <div>
             <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">QUICK LINKS</h3>
             <div className="space-y-3">
               {['About Us', 'Founder', 'Projects', 'Gallery', 'Collaboration'].map((item) => (
@@ -111,7 +112,7 @@ export function Footer() {
           </div>
 
           {/* Legal */}
-          <div className="lg:col-span-2">
+          <div>
             <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">LEGAL</h3>
             <div className="space-y-3">
               <Link to="/privacy-policy" className="block text-sm text-gray-300 hover:text-teal-400 transition-colors">
